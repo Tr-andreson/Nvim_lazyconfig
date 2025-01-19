@@ -2,15 +2,18 @@
 require("config.lazy")
 
 vim.opt.swapfile = false -- Disable swap files
-vim.opt.foldmethod = "manual"
-vim.opt.relativenumber = false
-vim.opt.number = false
-vim.opt.colorcolumn = "80"
+vim.opttfoldmethod = "manual"
+vim.opt.number = false -- Absolute line numbers
+vim.opt.relativenumber = false -- Relative line numbers
+
+vim.opt.colorcolumn = "80,120"
+
 -- Toggle colorcolumn with 'vv'
+-- NOTE: this functin is used for making color column
 vim.keymap.set("n", "vv", function()
   if vim.opt.colorcolumn:get()[1] == nil then
-    vim.opt.colorcolumn = "80"
-    print("ColorColumn ON")
+    vim.opt.colorcolumn = "80,120"
+    print("ColorColumn ON: 80, 120")
   else
     vim.opt.colorcolumn = ""
     print("ColorColumn OFF")

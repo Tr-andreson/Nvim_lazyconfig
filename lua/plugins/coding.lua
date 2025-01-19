@@ -10,7 +10,4 @@ return {
   {
     "lewis6991/gitsigns.nvim",
   },
-  {
-    "yuratomo/w3m.vim",
-  },
 }

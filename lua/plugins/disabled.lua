@@ -12,4 +12,9 @@ return {
       inlay_hints = { enabled = false },
     },
   },
+
+  {
+    "stevearc/dressing.nvim",
+    enabled = false,
+  },
 }

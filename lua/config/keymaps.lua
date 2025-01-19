@@ -27,14 +27,13 @@ keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "nn", ":tabprev<Return>", opts)
 keymap.set("n", "nw", ":tabclose<Return>", opts)
 
--- Split window
+-- Split window colemac
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
 
 keymap.set("n", "cc1", ":colorscheme monochrome<Return>", opts)
 keymap.set("n", "cc2", ":colorscheme solarized-osaka-moon<Return>", opts)
 keymap.set("n", "cc3", ":colorscheme onedark_dark<Return>", opts)
-keymap.set("n", "cc3", ":colorscheme default<Return>", opts)
 
 -- Move window
 keymap.set("n", "sh", "<C-w>h")
@@ -43,10 +42,12 @@ keymap.set("n", "sj", "<C-w>j")
 keymap.set("n", "sl", "<C-w>l")
 
 -- Resize window
-keymap.set("n", "<C-S-h>", "<C-w><")
-keymap.set("n", "<C-S-l>", "<C-w>>")
+-- keymap.set("n", "<C-S-h>", "<C-w><")
+-- keymap.set("n", "<C-S-l>", "<C-w>>")
 keymap.set("n", "<C-S-k>", "<C-w>+")
 keymap.set("n", "<C-S-j>", "<C-w>-")
+keymap.set("n", "<C-h>", "<C-w><") -- Ctrl + h
+keymap.set("n", "<C-l>", "<C-w>>") -- Ctrl + l
 
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
