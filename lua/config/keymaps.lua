@@ -64,3 +64,11 @@ keymap.set("n", "nm", ":tabedit<Return><C-w>w")
 keymap.set("n", "nn", ":tabnext<Return><C-w>w")
 
 keymap.set("n", "cp", ":! cat package.json<Return><C-w>")
+keymap.set("n", "<leader><F5>", vim.cmd.UndotreeToggle)
+
+keymap.set("n", "<leader>tf", function()
+  vim.cmd("term")
+  vim.cmd("only")
+end, { desc = "Open full-screen terminal" })
+-- keymap.set({ "v" }, "<Leader>re", require("react-extract").extract_to_new_file)
+keymap.set({ "v" }, "<Leader>rc", require("react-extract").extract_to_current_file)
