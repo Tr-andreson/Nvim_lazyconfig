@@ -9,10 +9,11 @@ return {
   {
     "craftzdog/solarized-osaka.nvim",
   },
+
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "monochrome",
+      colorscheme = "quiet",
     },
   },
 }
