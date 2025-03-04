@@ -5,6 +5,7 @@ vim.opt.swapfile = false -- Disable swap files
 vim.opttfoldmethod = "manual"
 vim.opt.number = false -- Absolute line numbers
 vim.opt.relativenumber = false -- Relative line numbers
+vim.o.laststatus = 0
 
 vim.opt.colorcolumn = "80,120"
 

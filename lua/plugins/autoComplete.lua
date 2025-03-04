@@ -1,5 +1,4 @@
 return {
-
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -12,7 +11,7 @@ return {
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
-      local autocomplete_enabled = false -- Define a variable to track the autocompletion state
+      local autocomplete_enabled = false -- Track the autocompletion state
 
       -- Disable automatic completion initially
       opts.completion = {
@@ -24,13 +23,15 @@ return {
         { name = "crates", priority = 750 },
       }))
 
-      -- Key mappings for manual completion
-      opts.mapping = {
+      -- Key mappings for completion
+      opts.mapping = cmp.mapping.preset.insert({
         ["<C-p>"] = cmp.mapping.complete(), -- Manual completion with Ctrl + P
         ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Confirm selection with Enter
-      }
+        ["<Down>"] = cmp.mapping.select_next_item(), -- Navigate down in the completion menu
+        ["<Up>"] = cmp.mapping.select_prev_item(), -- Navigate up in the completion menu
+      })
 
-      -- Key mapping to toggle autocompletion on and off with Ctrl + T
+      -- Key mapping to toggle autocompletion on/off with Ctrl + T
       vim.api.nvim_set_keymap("n", "<C-t>", "", {
         noremap = true,
         silent = true,
