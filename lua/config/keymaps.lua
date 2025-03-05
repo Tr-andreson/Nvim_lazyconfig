@@ -45,15 +45,17 @@ keymap.set("n", "sl", "<C-w>l")
 -- Resize window
 -- keymap.set("n", "<C-S-h>", "<C-w><")
 -- keymap.set("n", "<C-S-l>", "<C-w>>")
-keymap.set("n", "<C-S-k>", "<C-w>+")
-keymap.set("n", "<C-S-j>", "<C-w>-")
+-- keymap.set("n", "<C-S-k>", "<C-w>+")
+-- keymap.set("n", "<C-S-j>", "<C-w>-")
+keymap.set("n", "<C-k>", "<C-w>+")
+keymap.set("n", "<C-j>", "<C-w>-")
 keymap.set("n", "<C-h>", "<C-w><") -- Ctrl + h
 keymap.set("n", "<C-l>", "<C-w>>") -- Ctrl + l
 
--- Diagnostics
-keymap.set("n", "<C-j>", function()
-  vim.diagnostic.goto_next()
-end, opts)
+-- -- Diagnostics
+-- keymap.set("n", "<C-j>", function()
+--   vim.diagnostic.goto_next()
+-- end, opts)
 
 --- typescript keymaps
 keymap.set("n", "tam", ":TypescriptAddMissingImports<Return><C-w>")
