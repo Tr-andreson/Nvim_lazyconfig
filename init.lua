@@ -6,8 +6,7 @@ vim.opttfoldmethod = "manual"
 vim.opt.number = false -- Absolute line numbers
 vim.opt.relativenumber = false -- Relative line numbers
 vim.o.laststatus = 0
-vim.opt.fillchars:append({ vert = "┃" })
-
+vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80,120"
 
 -- Toggle colorcolumn with 'vv'

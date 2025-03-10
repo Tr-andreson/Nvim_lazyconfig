@@ -32,7 +32,7 @@ keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
 
 keymap.set("n", "cc1", ":colorscheme monochrome<Return>", opts)
-keymap.set("n", "cc2", ":colorscheme solarized-osaka-moon<Return>", opts)
+keymap.set("n", "cc2", ":colorscheme solarized-osaka<Return>", opts)
 keymap.set("n", "cc3", ":colorscheme onedark_dark<Return>", opts)
 keymap.set("n", "cc0", ":colorscheme quiet<Return>", opts)
 
@@ -49,8 +49,8 @@ keymap.set("n", "sl", "<C-w>l")
 -- keymap.set("n", "<C-S-j>", "<C-w>-")
 keymap.set("n", "<C-k>", "<C-w>+")
 keymap.set("n", "<C-j>", "<C-w>-")
-keymap.set("n", "<C-h>", "<C-w><") -- Ctrl + h
-keymap.set("n", "<C-l>", "<C-w>>") -- Ctrl + l
+keymap.set("n", "<C-l>", "<C-w><") -- Ctrl + h
+keymap.set("n", "<C-h>", "<C-w>>") -- Ctrl + l
 
 -- -- Diagnostics
 -- keymap.set("n", "<C-j>", function()

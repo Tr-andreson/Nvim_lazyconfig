@@ -12,21 +12,21 @@ return {
       inlay_hints = { enabled = false },
     },
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    enabled = false,
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   enabled = false,
+  -- },
 
-  {
-    "akinsho/bufferline.nvim",
-    enabled = false,
-  },
+  -- {
+  --   "akinsho/bufferline.nvim",
+  --   enabled = false,
+  -- },
   {
     "nvim-lualine/lualine.nvim",
     enabled = false,
   },
-  {
-    "stevearc/dressing.nvim",
-    enabled = false,
-  },
+  -- {
+  --   "stevearc/dressing.nvim",
+  --   enabled = false,
+  -- },
 }
