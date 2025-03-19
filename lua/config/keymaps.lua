@@ -66,6 +66,96 @@ keymap.set("n", "tfa", ":TypescriptFixAll<Return><C-w>")
 keymap.set("n", "nm", ":tabedit<Return><C-w>w")
 keymap.set("n", "nn", ":tabnext<Return><C-w>w")
 
-keymap.set("n", "cp", ":! cat package.json<Return><C-w>")
+-- keymap.set("n", "cp", ":new | r!cat package.json<CR>")
+-- vim.keymap.set("n", "cp", function()
+--   -- Create a scratch buffer
+--   local buf = vim.api.nvim_create_buf(false, true)
+--
+--   -- Define floating window dimensions
+--   local width = math.floor(vim.o.columns * 0.8)
+--   local height = math.floor(vim.o.lines * 0.8)
+--   local row = math.floor((vim.o.lines - height) / 2)
+--   local col = math.floor((vim.o.columns - width) / 2)
+--
+--   -- Open the floating window
+--   vim.api.nvim_open_win(buf, true, {
+--     relative = "editor",
+--     width = width,
+--     height = height,
+--     row = row,
+--     col = col,
+--     style = "minimal",
+--     border = "rounded",
+--   })
+--
+--   -- Read the package.json file content into the buffer
+--   vim.fn.jobstart({ "cat", "package.json" }, {
+--     stdout_buffered = true,
+--     on_stdout = function(_, data)
+--       if data then
+--         vim.api.nvim_buf_set_lines(buf, 0, -1, false, data)
+--       end
+--     end,
+--   })
+-- end, { desc = "Open package.json in floating window" })
 
-keymap.set({ "v" }, "<Leader>rc", require("react-extract").extract_to_current_file)
+-- vim.keymap.set("n", "cp", function()
+--   -- Create a scratch buffer
+--   local buf = vim.api.nvim_create_buf(false, true)
+--
+--   -- Define floating window dimensions
+--   local width = math.floor(vim.o.columns * 0.8)
+--   local height = math.floor(vim.o.lines * 0.8)
+--   local row = math.floor((vim.o.lines - height) / 2)
+--   local col = math.floor((vim.o.columns - width) / 2)
+--
+--   -- Open the floating window
+--   vim.api.nvim_open_win(buf, true, {
+--     relative = "editor",
+--     width = width,
+--     height = height,
+--     row = row,
+--     col = col,
+--     style = "minimal",
+--     border = "rounded",
+--   })
+--
+--   local output = {}
+--
+--   -- First job: get node_modules size first
+--   vim.fn.jobstart({ "du", "-sh", "node_modules" }, {
+--     stdout_buffered = true,
+--     on_stdout = function(_, size_data)
+--       if size_data then
+--         vim.list_extend(output, { "=== node_modules size ===" })
+--         vim.list_extend(output, size_data)
+--         vim.list_extend(output, { "", "=== package.json ===" })
+--       end
+--     end,
+--     on_exit = function()
+--       -- Then load package.json
+--       vim.fn.jobstart({ "cat", "package.json" }, {
+--         stdout_buffered = true,
+--         on_stdout = function(_, data)
+--           if data then
+--             vim.list_extend(output, data)
+--           end
+--           -- Set all combined lines to buffer
+--           vim.api.nvim_buf_set_lines(buf, 0, -1, false, output)
+--           vim.api.nvim_buf_set_option(buf, "filetype", "json")
+--
+--           -- Highlight node_modules section in yellow
+--           vim.api.nvim_buf_add_highlight(buf, -1, "WarningMsg", 0, 0, -1)
+--           vim.api.nvim_buf_add_highlight(buf, -1, "WarningMsg", 1, 0, -1)
+--         end,
+--       })
+--     end,
+--   })
+--
+-- Optional: close on "q"
+--   vim.api.nvim_buf_set_keymap(buf, "n", "q", "<cmd>bd!<CR>", { noremap = true, silent = true })
+-- end, { desc = "Show node_modules size + package.json in floating window" })
+
+-- vim.keymap.set("n", "cp", ":tabnew package.json<CR>")
+
+vim.keymap.set("n", "cp", ":split package.json<CR>")
