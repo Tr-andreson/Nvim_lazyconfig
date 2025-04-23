@@ -59,8 +59,20 @@ return {
 
       -- Keymaps
       local map = vim.keymap.set
-      map("n", "zo", require("ufo").openAllFolds, { desc = "Open All Folds" })
-      map("n", "zk", require("ufo").closeAllFolds, { desc = "Close All Folds" })
+      local folds_open = false
+
+      map("n", "zk", function()
+        local ufo = require("ufo")
+        if folds_open then
+          ufo.closeAllFolds()
+          folds_open = false
+        else
+          ufo.openAllFolds()
+          folds_open = true
+        end
+      end, { desc = "UFO Toggle All Folds" })
+      -- map("n", "zo", require("ufo").openAllFolds, { desc = "Open All Folds" })
+      -- map("n", "zk", require("ufo").closeAllFolds, { desc = "Close All Folds" })
       map("n", "zp", require("ufo").peekFoldedLinesUnderCursor, { desc = "Peek Folded Lines" })
     end,
   },
