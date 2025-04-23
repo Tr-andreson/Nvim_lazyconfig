@@ -158,4 +158,4 @@ keymap.set("n", "nn", ":tabnext<Return><C-w>w")
 
 -- vim.keymap.set("n", "cp", ":tabnew package.json<CR>")
 
-vim.keymap.set("n", "cp", ":split package.json<CR>")
+keymap.set("n", "<leader>t", ":TailwindFoldToggle<Return>")
