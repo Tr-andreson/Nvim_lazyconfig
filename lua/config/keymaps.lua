@@ -159,3 +159,39 @@ keymap.set("n", "nn", ":tabnext<Return><C-w>w")
 -- vim.keymap.set("n", "cp", ":tabnew package.json<CR>")
 
 keymap.set("n", "<leader>t", ":TailwindFoldToggle<Return>")
+
+vim.keymap.set("n", "cl", function()
+  local var = vim.fn.expand("<cword>")
+  vim.api.nvim_feedkeys(
+    "o"
+      .. "console.log("
+      .. var
+      .. ', "'
+      .. var
+      .. ' debug");'
+      .. vim.api.nvim_replace_termcodes("<Esc>", true, true, true),
+    "n",
+    true
+  )
+end, { desc = "Add console.log with debug label for variable under cursor" })
+
+vim.keymap.set("n", "cd", function()
+  vim.api.nvim_feedkeys("o" .. "debugger;" .. vim.api.nvim_replace_termcodes("<Esc>", true, true, true), "n", true)
+end, { desc = "Insert debugger statement below" })
+
+vim.keymap.set("n", "cL", function()
+  local var = vim.fn.expand("<cword>")
+  vim.api.nvim_feedkeys(
+    "o"
+      .. "console.log("
+      .. var
+      .. ', "'
+      .. var
+      .. ' debug");'
+      .. "\n"
+      .. "debugger;"
+      .. vim.api.nvim_replace_termcodes("<Esc>", true, true, true),
+    "n",
+    true
+  )
+end, { desc = "Add console.log and debugger statement below" })
