@@ -68,7 +68,7 @@ keymap.set("n", "nn", ":tabnext<Return><C-w>w")
 
 vim.keymap.set("n", "cp", ":tabnew package.json<CR>")
 
-keymap.set("n", "<leader>t", ":TailwindFoldToggle<Return>")
+keymap.set("n", "<leader>0", ":TailwindFoldToggle<Return>")
 
 vim.keymap.set("n", "cl", function()
   local var = vim.fn.expand("<cword>")

@@ -9,7 +9,9 @@ return {
   {
     "craftzdog/solarized-osaka.nvim",
   },
-
+  {
+    "rose-pine/neovim",
+  },
   {
     "LazyVim/LazyVim",
     opts = {
