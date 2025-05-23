@@ -23,17 +23,17 @@ return {
       local float = Terminal:new({ direction = "float" })
       local tab = Terminal:new({ direction = "tab" })
 
-      vim.keymap.set({ "n", "t" }, "<leader>t", function()
+      vim.keymap.set({ "n", "t" }, "<leader>a", function()
         horiz:toggle()
       end, { desc = "Toggle Horizontal Terminal" })
 
-      vim.keymap.set({ "n", "t" }, "<leader>f", function()
+      vim.keymap.set({ "n", "t" }, "<leader>;", function()
         float:toggle()
       end, { desc = "Toggle Floating Terminal" })
 
-      vim.keymap.set({ "n", "t" }, "<leader>;", function()
+      vim.keymap.set({ "n", "t" }, "<leader>t", function()
         vert:toggle()
-      end, { desc = "Toggle Floating Terminal" })
+      end, { desc = "Toggle Vertical Terminal" })
 
       -- Terminal navigation keybindings
       vim.cmd([[
