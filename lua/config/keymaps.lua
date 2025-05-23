@@ -24,8 +24,8 @@ keymap.set("n", "<Leader>Q", ":qa<Return>", opts)
 -- Tabs
 keymap.set("n", "nm", ":tabedit")
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "nn", ":tabprev<Return>", opts)
-keymap.set("n", "nw", ":tabclose<Return>", opts)
+keymap.set({ "n", "t" }, "nn", ":tabprev<Return>", opts)
+keymap.set({ "n", "t" }, "nw", ":tabclose<Return>", opts)
 
 -- Split window colemac
 keymap.set("n", "ss", ":split<Return>", opts)
@@ -68,7 +68,7 @@ keymap.set("n", "nn", ":tabnext<Return><C-w>w")
 
 vim.keymap.set("n", "cp", ":tabnew package.json<CR>")
 
-keymap.set("n", "<leader>0", ":TailwindFoldToggle<Return>")
+-- keymap.set("n", "<leader>0", ":TailwindFoldToggle<Return>")
 
 vim.keymap.set("n", "cl", function()
   local var = vim.fn.expand("<cword>")
