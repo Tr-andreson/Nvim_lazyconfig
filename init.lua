@@ -6,7 +6,7 @@ vim.opt.swapfile = false -- Disable swap files
 vim.opt.foldmethod = "manual"
 vim.opt.number = false -- Absolute line numbers
 vim.opt.relativenumber = false -- Relative line numbers
--- vim.o.laststatus = 0
+vim.o.laststatus = 0
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80,120"
 
@@ -21,3 +21,7 @@ vim.keymap.set("n", "vv", function()
     print("ColorColumn OFF")
   end
 end, { desc = "Toggle color column" })
+
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true })

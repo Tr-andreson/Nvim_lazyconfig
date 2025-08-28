@@ -1,13 +1,8 @@
 return {
-  -- Hihglight colors
   {
-    "echasnovski/mini.hipatterns",
-    event = "BufReadPre",
-    opts = {},
-  },
-  {
-    "telescope.nvim",
-    priority = 1000,
+    "nvim-telescope/telescope.nvim",
+    version = false, -- use latest
+    cmd = "Telescope",
     dependencies = {
       {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -19,71 +14,54 @@ return {
       {
         ";f",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.find_files({
+          require("telescope.builtin").find_files({
             no_ignore = false,
             hidden = true,
           })
         end,
-        desc = "Lists files in your current working directory, respects .gitignore",
+        desc = "Find files (includes hidden)",
       },
       {
         ";r",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.live_grep()
+          require("telescope.builtin").live_grep()
         end,
-        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+        desc = "Live Grep",
       },
       {
         "\\\\",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.buffers()
+          require("telescope.builtin").buffers()
         end,
-        desc = "Lists open buffers",
+        desc = "List buffers",
       },
       {
         ";;",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.resume()
+          require("telescope.builtin").resume()
         end,
-        desc = "Resume the previous telescope picker",
+        desc = "Resume last search",
       },
       {
         ";e",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.diagnostics()
+          require("telescope.builtin").diagnostics()
         end,
-        desc = "Lists Diagnostics for all open buffers or a specific buffer",
+        desc = "Diagnostics",
       },
       {
         ";s",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.treesitter()
+          require("telescope.builtin").treesitter()
         end,
-        desc = "Lists Function names, variables, from Treesitter",
+        desc = "Symbols (Treesitter)",
       },
-
       {
         "sf",
         function()
           local telescope = require("telescope")
           local function telescope_buffer_dir()
             return vim.fn.expand("%:p:h")
-          end
-
-          local function is_excluded(entry)
-            local excluded_dirs = { "node_modules", ".dist", ".next" }
-            for _, dir in ipairs(excluded_dirs) do
-              if string.match(entry, "/" .. dir .. "/") then
-                return true
-              end
-            end
-            return false
           end
 
           telescope.extensions.file_browser.file_browser({
@@ -95,86 +73,47 @@ return {
             previewer = false,
             initial_mode = "normal",
             layout_config = { height = 40 },
-            attach_mappings = function(_, map)
-              map("i", "<CR>", function(prompt_bufnr)
-                local entry = vim.fn.expand(telescope.get_prompt_bufnr(prompt_bufnr).buf:get_lines(0, -1, false)[1])
-                if not is_excluded(entry) then
-                  require("telescope.actions").goto_file_selection_edit(prompt_bufnr)
-                end
-              end)
-              return true
-            end,
           })
         end,
-        desc = "Open File Browser with the path of the current buffer",
+        desc = "File browser (current buffer dir)",
       },
-
-      -- {
-      --   "sf",
-      --   function()
-      --     local telescope = require("telescope")
-      --
-      --     local function telescope_buffer_dir()
-      --       return vim.fn.expand("%:p:h")
-      --     end
-      --
-      --     telescope.extensions.file_browser.file_browser({
-      --       path = "%:p:h",
-      --       cwd = telescope_buffer_dir(),
-      --       respect_gitignore = true,
-      --       hidden = true,
-      --       grouped = true,
-      --       previewer = false,
-      --       initial_mode = "normal",
-      --       layout_config = { height = 40 },
-      --     })
-      --   end,
-      --   desc = "Open File Browser with the path of the current buffer",
-      -- },
     },
-    config = function(_, opts)
-      local telescope = require("telescope")
+    opts = function(_, opts)
       local actions = require("telescope.actions")
       local fb_actions = require("telescope").extensions.file_browser.actions
 
-      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+      opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
         wrap_results = true,
         layout_strategy = "horizontal",
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
         winblend = 0,
         file_ignore_patterns = { "node_modules/*", "public/*", ".next/*", ".git/*" },
-        mappings = {
-          n = {},
-        },
       })
+
       opts.pickers = {
         diagnostics = {
           theme = "ivy",
           initial_mode = "normal",
-          layout_config = {
-            preview_cutoff = 9999,
-          },
+          layout_config = { preview_cutoff = 9999 },
         },
       }
+
       opts.extensions = {
         file_browser = {
           theme = "dropdown",
-          -- disables netrw and use telescope-file-browser in its place
           hijack_netrw = true,
           mappings = {
-            -- your custom insert mode mappings
             ["n"] = {
-              -- your custom normal mode mappings
               ["N"] = fb_actions.create,
               ["h"] = fb_actions.goto_parent_dir,
               ["<C-u>"] = function(prompt_bufnr)
-                for i = 1, 10 do
+                for _ = 1, 10 do
                   actions.move_selection_previous(prompt_bufnr)
                 end
               end,
               ["<C-d>"] = function(prompt_bufnr)
-                for i = 1, 10 do
+                for _ = 1, 10 do
                   actions.move_selection_next(prompt_bufnr)
                 end
               end,
@@ -182,9 +121,14 @@ return {
           },
         },
       }
+
+      return opts
+    end,
+    config = function(_, opts)
+      local telescope = require("telescope")
       telescope.setup(opts)
-      require("telescope").load_extension("fzf")
-      require("telescope").load_extension("file_browser")
+      telescope.load_extension("fzf")
+      telescope.load_extension("file_browser")
     end,
   },
 }
