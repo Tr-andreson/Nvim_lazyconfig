@@ -1,4 +1,4 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
+-- bootsetxkbmap us -variant colemak_dhstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
 vim.opt.swapfile = false -- Disable swap files
@@ -22,6 +22,7 @@ vim.keymap.set("n", "vv", function()
   end
 end, { desc = "Toggle color column" })
 
-vim.opt.timeout = true
+
+
 vim.opt.timeoutlen = 300
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })

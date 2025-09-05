@@ -60,8 +60,24 @@ return {
         },
       })
 
+      -- Left side vertical terminal (40% width)
+      local left_term = Terminal:new({
+        direction = "float",
+        float_opts = {
+          border = "rounded",
+          width = function()
+            return math.floor(vim.o.columns * 0.4)
+          end,
+          height = function()
+            return vim.o.lines
+          end,
+          row = 0,
+          col = 0, -- stick to left side
+        },
+      })
+
       -- Group for checking multiple terminals
-      local all_terms = { horiz, float, tab, vert_overlay, horiz_overlay }
+      local all_terms = { horiz, float, tab, vert_overlay, horiz_overlay, left_term }
 
       local function any_terminal_open()
         for _, t in ipairs(all_terms) do
@@ -83,25 +99,21 @@ return {
       end
 
       -- Keymaps
-      -- vim.keymap.set({ "n", "t" }, "<leader>a", function()
-      --   safe_toggle(horiz)
-      -- end, { desc = "Toggle Horizontal Split Terminal" })
-
       vim.keymap.set({ "n", "t" }, "<leader>o", function()
         safe_toggle(float)
       end, { desc = "Toggle Floating Terminal" })
 
       vim.keymap.set({ "n", "t" }, "<leader>;", function()
         safe_toggle(vert_overlay)
-      end, { desc = "Toggle Vertical Overlay Terminal" })
+      end, { desc = "Toggle Right Overlay Terminal" })
+
+      vim.keymap.set({ "n", "t" }, "<leader><leader>", function()
+        safe_toggle(horiz_overlay)
+      end, { desc = "Toggle Bottom Overlay Terminal" })
 
       vim.keymap.set({ "n", "t" }, "<leader>a", function()
-        safe_toggle(horiz_overlay)
-      end, { desc = "Toggle Horizontal Overlay Terminal" })
-
-      -- vim.keymap.set({ "n", "t" }, "<leader>t", function()
-      --   safe_toggle(tab)
-      -- end, { desc = "Toggle Tab Terminal" })
+        safe_toggle(left_term)
+      end, { desc = "Toggle Left Overlay Terminal" })
 
       -- Terminal navigation
       vim.cmd([[
