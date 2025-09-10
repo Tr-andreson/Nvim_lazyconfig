@@ -66,7 +66,7 @@ return {
         float_opts = {
           border = "rounded",
           width = function()
-            return math.floor(vim.o.columns * 0.4)
+            return math.floor(vim.o.columns * 0.7)
           end,
           height = function()
             return vim.o.lines
@@ -99,15 +99,15 @@ return {
       end
 
       -- Keymaps
-      vim.keymap.set({ "n", "t" }, "<leader>o", function()
-        safe_toggle(float)
-      end, { desc = "Toggle Floating Terminal" })
+      -- vim.keymap.set({ "n", "t" }, "<leader>o", function()
+      --   safe_toggle(float)
+      -- end, { desc = "Toggle Floating Terminal" })
 
       vim.keymap.set({ "n", "t" }, "<leader>;", function()
         safe_toggle(vert_overlay)
       end, { desc = "Toggle Right Overlay Terminal" })
 
-      vim.keymap.set({ "n", "t" }, "<leader><leader>", function()
+      vim.keymap.set({ "n", "t" }, "<leader>o", function()
         safe_toggle(horiz_overlay)
       end, { desc = "Toggle Bottom Overlay Terminal" })
 

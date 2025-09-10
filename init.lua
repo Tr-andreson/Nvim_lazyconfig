@@ -22,7 +22,5 @@ vim.keymap.set("n", "vv", function()
   end
 end, { desc = "Toggle color column" })
 
-
-
 vim.opt.timeoutlen = 300
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
