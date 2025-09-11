@@ -1,22 +1,28 @@
 return {
-
-  -- Add noice.nvim for command-line UI enhancements
   {
     "folke/noice.nvim",
-    event = "VeryLazy", -- Lazy load on a useful event
-    config = function()
-      require("noice").setup({
-        cmdline = {
-          view = "cmdline_popup", -- Use floating window for cmdline
+    event = "VeryLazy",
+    opts = {
+      cmdline = {
+        view = "cmdline_popup", -- use popup for cmdline
+      },
+      views = {
+        cmdline_popup = {
           position = {
-            row = "50%", -- Vertically center
-            col = "50%", -- Horizontally center
+            row = 0, -- top of the screen
+            col = "50%", -- centered horizontally
+          },
+          size = {
+            width = "30%", -- span full width
+          },
+          border = {
+            style = "rounded",
           },
         },
-      })
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim", -- Required dependency for noice.nvim
+      },
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
     },
   },
 }
