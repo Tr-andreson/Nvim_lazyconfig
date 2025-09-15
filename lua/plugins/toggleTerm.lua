@@ -51,10 +51,10 @@ return {
             return vim.o.columns
           end,
           height = function()
-            return math.floor(vim.o.lines * 1)
+            return math.floor(vim.o.lines * 0.8)
           end,
           row = function()
-            return vim.o.lines - math.floor(vim.o.lines * 0.6)
+            return vim.o.lines - math.floor(vim.o.lines * 0.4)
           end,
           col = 0,
         },
