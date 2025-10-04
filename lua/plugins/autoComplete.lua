@@ -26,7 +26,8 @@ return {
 
       -- Key mappings for completion
       opts.mapping = cmp.mapping.preset.insert({
-        ["<C-p>"] = cmp.mapping.complete(), -- Manual completion with Ctrl + P
+        -- ["<C-p>"] = cmp.mapping.complete(), -- Manual completion with Ctrl + P
+        ["j;"] = cmp.mapping.complete(), -- Manual completion with Ctrl + P
         ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Confirm selection with Enter
         ["<Down>"] = cmp.mapping.select_next_item(), -- Navigate down in the completion menu
         ["<Up>"] = cmp.mapping.select_prev_item(), -- Navigate up in the completion menu
