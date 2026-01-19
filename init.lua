@@ -9,6 +9,11 @@ vim.opt.relativenumber = false -- Relative line numbers
 vim.o.laststatus = 0
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80,120"
+-- Scroll 3 lines down/up
+-- vim.keymap.set("n", "<C-d>", "5<C-e>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<C-u>", "5<C-y>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-d>", "5j", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-u>", "5k", { noremap = true, silent = true })
 
 -- Toggle colorcolumn with 'vv'
 -- NOTE: this functin is used for making color column
