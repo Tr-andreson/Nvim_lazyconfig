@@ -86,8 +86,16 @@ vim.keymap.set("n", "cl", function()
 end, { desc = "Add console.log with debug label for variable under cursor" })
 
 vim.keymap.set("n", "cd", function()
-  vim.api.nvim_feedkeys("o" .. "debugger;" .. vim.api.nvim_replace_termcodes("<Esc>", true, true, true), "n", true)
-end, { desc = "Insert debugger statement below" })
+  local var = vim.fn.expand("<cword>") -- gets word under cursor
+
+  local lines = {
+    "if (" .. var .. ") {",
+    "  debugger;",
+    "}",
+  }
+
+  vim.api.nvim_put(lines, "l", true, true)
+end, { desc = "Insert if block with debugger below" })
 
 vim.keymap.set("n", "cL", function()
   local var = vim.fn.expand("<cword>")
