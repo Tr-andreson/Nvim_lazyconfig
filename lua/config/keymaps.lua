@@ -113,3 +113,21 @@ vim.keymap.set("n", "cL", function()
     true
   )
 end, { desc = "Add console.log and debugger statement below" })
+
+vim.keymap.set("n", "<C-d>", "5j", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-u>", "5k", { noremap = true, silent = true })
+
+-- Toggle colorcolumn with 'vv'
+-- NOTE: this functin is used for making color column
+vim.keymap.set("n", "vv", function()
+  if vim.opt.colorcolumn:get()[1] == nil then
+    vim.opt.colorcolumn = "80,120"
+    print("ColorColumn ON: 80, 120")
+  else
+    vim.opt.colorcolumn = ""
+    print("ColorColumn OFF")
+  end
+end, { desc = "Toggle color column" })
+
+vim.opt.timeoutlen = 300
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
