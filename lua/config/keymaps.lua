@@ -42,3 +42,9 @@ keymap.set("n", "<C-h>", "<C-w>>") -- Ctrl + l
 
 vim.opt.timeoutlen = 300
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
+
+
+keymap.set("n", "<space>ul", function()
+  vim.wo.number = not vim.wo.number
+  vim.wo.relativenumber = vim.wo.number
+end, { desc = "Toggle line + relative numbers" })
