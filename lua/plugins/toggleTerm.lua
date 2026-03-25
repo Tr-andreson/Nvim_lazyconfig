@@ -103,15 +103,15 @@ return {
       --   safe_toggle(float)
       -- end, { desc = "Toggle Floating Terminal" })
 
-      vim.keymap.set({ "n", "t" }, "<leader>;", function()
+      vim.keymap.set({ "n", "t" }, "<space>;", function()
         safe_toggle(vert_overlay)
       end, { desc = "Toggle Right Overlay Terminal" })
 
-      vim.keymap.set({ "n", "t" }, "<leader>o", function()
+      vim.keymap.set({ "n", "t" }, "<space>o", function()
         safe_toggle(horiz_overlay)
       end, { desc = "Toggle Bottom Overlay Terminal" })
 
-      vim.keymap.set({ "n", "t" }, "<leader>a", function()
+      vim.keymap.set({ "n", "t" }, "<space>a", function()
         safe_toggle(left_term)
       end, { desc = "Toggle Left Overlay Terminal" })
 

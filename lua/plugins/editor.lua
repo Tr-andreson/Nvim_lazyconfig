@@ -29,27 +29,6 @@ return {
         desc = "Live Grep",
       },
       {
-        "\\\\",
-        function()
-          require("telescope.builtin").buffers()
-        end,
-        desc = "List buffers",
-      },
-      {
-        ";;",
-        function()
-          require("telescope.builtin").resume()
-        end,
-        desc = "Resume last search",
-      },
-      {
-        ";e",
-        function()
-          require("telescope.builtin").diagnostics()
-        end,
-        desc = "Diagnostics",
-      },
-      {
         ";s",
         function()
           require("telescope.builtin").treesitter()

@@ -3,7 +3,7 @@ return {
     "folke/zen-mode.nvim",
     event = "VeryLazy",
     cmd = "ZenMode",
-    keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
+    keys = { { "<space>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
     opts = {
       plugins = {
         twilight = { enabled = false }, -- we will toggle manually
