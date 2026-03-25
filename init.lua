@@ -13,6 +13,5 @@ vim.o.laststatus = 0
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80,120"
 vim.opt.showmode = false
-
-
-
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
