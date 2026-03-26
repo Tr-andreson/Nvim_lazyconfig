@@ -1,4 +1,8 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- boosetxkbmap us -variant colemak_dhstrap lazy.nvim, LazyVim and your plugins
+--
 require("config.lazy")
 
 
@@ -15,3 +19,6 @@ vim.opt.colorcolumn = "80,120"
 vim.opt.showmode = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.statuscolumn = ""
+vim.opt.foldcolumn = "0"
+vim.opt.signcolumn = "no"
