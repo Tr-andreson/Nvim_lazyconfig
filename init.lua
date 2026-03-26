@@ -19,6 +19,13 @@ vim.opt.colorcolumn = "80,120"
 vim.opt.showmode = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.statuscolumn = ""
-vim.opt.foldcolumn = "0"
-vim.opt.signcolumn = "no"
+-- Force these settings to stay off every time a file is opened
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = "*",
+  callback = function()
+    vim.opt.statuscolumn = ""
+    vim.opt.foldcolumn = "0"
+    vim.opt.signcolumn = "no" -- Change to "yes" if you want LSP icons back
+	vim.opt.wrap = false       -- Ensures 'nowrap' is always true
+  end,
+})
