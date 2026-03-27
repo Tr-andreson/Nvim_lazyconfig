@@ -29,3 +29,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	vim.opt.wrap = false       -- Ensures 'nowrap' is always true
   end,
 })
+
+
+
