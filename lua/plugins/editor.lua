@@ -29,13 +29,6 @@ return {
         desc = "Live Grep",
       },
       {
-        ";s",
-        function()
-          require("telescope.builtin").treesitter()
-        end,
-        desc = "Symbols (Treesitter)",
-      },
-      {
         "sf",
         function()
           local telescope = require("telescope")
