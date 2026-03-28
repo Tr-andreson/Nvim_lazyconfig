@@ -3,16 +3,22 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
 
-    lazy = false, -- 🔥 FORCE LOAD (important)
+	event = { "BufReadPost", "BufNewFile" }, -- 🔥 REQUIRED
 
+    -- 🔥 THIS FIXES YOUR ISSUE
     config = function()
-      require("nvim-treesitter.configs").setup({
+      local ok, configs = pcall(require, "nvim-treesitter.configs")
+      if not ok then
+        return
+      end
+
+      configs.setup({
         ensure_installed = {
           "html",
+          "cpp",
           "javascript",
           "typescript",
           "tsx",
-          "cpp",
           "rust",
         },
         highlight = { enable = true },
@@ -21,3 +27,5 @@ return {
     end,
   },
 }
+
+
