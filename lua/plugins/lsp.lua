@@ -79,11 +79,55 @@ return {
             vim.cmd("TSLspOrganize")
             vim.cmd("TSLspRemoveUnused")
           end, opts)
-        end,
-      })
-    end,
-  },
-}
+
+		  vim.keymap.set("n", "cl", function()
+			  local var = vim.fn.expand("<cword>")
+			  vim.api.nvim_feedkeys(
+				"o"
+				  .. "console.log("
+				  .. var
+				  .. ', "'
+				  .. var
+				  .. ' debug");'
+				  .. vim.api.nvim_replace_termcodes("<Esc>", true, true, true),
+				"n",
+			 true
+			  )
+		end, { desc = "Add console.log with debug label for variable under cursor" })
+				end,
+			  })
+
+
+	  
+		vim.keymap.set("n", "cd", function()
+		  local var = vim.fn.expand("<cword>") -- gets word under cursor
+
+		  local lines = {
+			"if (" .. var .. ") {",
+			"  debugger;",
+			"}",
+		  }
+
+		vim.api.nvim_put(lines, "l", true, true)
+		end, { desc = "Insert if block with debugger below" })
+
+
+
+
+		-- Toggle colorcolumn with 'vv'
+		-- NOTE: this functin is used for making color column
+		vim.keymap.set("n", "vv", function()
+		  if vim.opt.colorcolumn:get()[1] == nil then
+			vim.opt.colorcolumn = "80,120"
+			print("ColorColumn ON: 80, 120")
+		  else
+			vim.opt.colorcolumn = ""
+			print("ColorColumn OFF")
+		  end
+		end, { desc = "Toggle color column" })
+			end,
+		  },
+		}
 
 
 

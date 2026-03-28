@@ -1,3 +1,4 @@
+vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/site")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
