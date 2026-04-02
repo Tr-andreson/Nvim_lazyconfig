@@ -2,8 +2,6 @@ vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/site")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- boosetxkbmap us -variant colemak_dhstrap lazy.nvim, LazyVim and your plugins
---
 require("config.lazy")
 
 
@@ -35,4 +33,42 @@ vim.opt.clipboard = "unnamedplus"
 
 
 
+
+vim.api.nvim_create_autocmd("InsertCharPre", {
+  pattern = { "*.html", "*.jsx", "*.tsx" },
+  callback = function()
+    local char = vim.v.char
+
+    -- Trigger only when typing ">"
+    if char ~= ">" then
+      return
+    end
+
+    local line = vim.api.nvim_get_current_line()
+    local col = vim.api.nvim_win_get_cursor(0)[2]
+
+    -- Get text before cursor
+    local before = line:sub(1, col)
+
+    -- Match last opening tag
+    local tag = before:match("<(%w+)[^>]*$")
+
+    if tag then
+      -- Avoid self-closing tags
+      local self_closing = {
+        br = true, img = true, input = true, hr = true, meta = true, link = true
+      }
+
+      if self_closing[tag] then
+        return
+      end
+
+      -- Insert closing tag
+      vim.schedule(function()
+        vim.api.nvim_put({ "</" .. tag .. ">" }, "c", true, true)
+        vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), col + 1 })
+      end)
+    end
+  end,
+})
 
