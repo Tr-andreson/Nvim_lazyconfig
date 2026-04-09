@@ -1,4 +1,4 @@
-return{
+return {
 	------------------------------------
 	-- 🧱 Mason
 	------------------------------------
@@ -8,7 +8,7 @@ return{
 			require("mason").setup()
 		end,
 	},
- 
+
 	------------------------------------
 	-- 🔗 Mason ↔ LSP
 	------------------------------------
@@ -31,7 +31,7 @@ return{
 			})
 		end,
 	},
- 
+
 	------------------------------------
 	-- 🧠 LSP
 	------------------------------------
@@ -46,28 +46,38 @@ return{
 				signs = true,
 				underline = true,
 			})
- 
+
 			vim.keymap.set("n", "<space>d", vim.diagnostic.open_float)
 			vim.opt.completeopt = { "menu", "menuone", "noselect" }
- 
+
 			------------------------------------
 			-- 🔑 Keymaps
 			------------------------------------
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(args)
 					local opts = { buffer = args.buf }
- 
+
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 					vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
 					vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
- 
+
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 					vim.keymap.set("n", "<space>fs", vim.lsp.buf.signature_help, opts)
 					vim.keymap.set("n", "<space>f", vim.lsp.buf.format, opts)
- 
+
+					vim.keymap.set("n", "<space>t", function()
+						vim.lsp.buf.code_action({
+							apply = true,
+							context = {
+								only = { "source.organizeImports.ts" },
+								diagnostics = {},
+							},
+						})
+					end, { buffer = args.buf, desc = "Organize/Remove Unused Imports" })
+
 					------------------------------------
 					-- 🔥 Simple import fix (replacement)
 					------------------------------------
@@ -82,7 +92,7 @@ return{
 					end, opts)
 				end,
 			})
- 
+
 			------------------------------------
 			-- 🟦 C++
 			------------------------------------
@@ -90,7 +100,7 @@ return{
 				cmd = { "clangd" },
 			})
 			vim.lsp.enable("clangd")
- 
+
 			------------------------------------
 			-- 🟨 TypeScript (ts_ls)
 			------------------------------------
@@ -98,7 +108,7 @@ return{
 			vim.lsp.enable("ts_ls")
 		end,
 	},
- 
+
 	------------------------------------
 	-- 🧰 Your utilities (kept)
 	------------------------------------
@@ -120,7 +130,7 @@ return{
 					true
 				)
 			end, { desc = "console.log debug" })
- 
+
 			-- debugger block
 			vim.keymap.set("n", "cd", function()
 				local var = vim.fn.expand("<cword>")
@@ -131,7 +141,7 @@ return{
 				}
 				vim.api.nvim_put(lines, "l", true, true)
 			end, { desc = "Insert debugger block" })
- 
+
 			-- colorcolumn toggle
 			vim.keymap.set("n", "vv", function()
 				if vim.opt.colorcolumn:get()[1] == nil then
