@@ -16,8 +16,8 @@ vim.o.laststatus = 0
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80,120"
 vim.opt.showmode = false
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 -- Force these settings to stay off every time a file is opened
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   pattern = "*",
