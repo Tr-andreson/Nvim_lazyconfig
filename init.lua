@@ -25,9 +25,12 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 		vim.opt.statuscolumn = ""
 		vim.opt.foldcolumn = "0"
 		vim.opt.signcolumn = "no" -- Change to "yes" if you want LSP icons back
-		vim.opt.wrap = false      -- Ensures 'nowrap' is always true
+		vim.opt.wrap = false -- Ensures 'nowrap' is always true
+		vim.o.cmdheight = 0
+		vim.opt.shortmess:append("Cc") -- Hide redundant messages
 	end,
 })
+
 
 vim.opt.clipboard = "unnamedplus"
 

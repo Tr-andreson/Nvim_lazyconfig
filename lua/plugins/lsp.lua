@@ -154,4 +154,5 @@ return {
 			end, { desc = "Toggle color column" })
 		end,
 	},
+
 }
