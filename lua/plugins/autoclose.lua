@@ -1,5 +1,4 @@
-
-  return {
+return {
   "m4xshen/autoclose.nvim",
   event = "InsertEnter", -- lazy load (fast startup)
   opts = {
