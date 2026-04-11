@@ -12,7 +12,7 @@ return {
 					position = "float",
 					border = "rounded",
 					backdrop = 60,
-					width = 0.8,
+					width = 0.9,
 					height = 0,        -- 🟢 0 = Full height (covers the top)
 					row = 0,           -- 🟢 0 = Starts at the very top
 					col = 0,
