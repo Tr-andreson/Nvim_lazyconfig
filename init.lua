@@ -38,7 +38,6 @@ vim.opt.clipboard = "unnamedplus"
 
 
 vim.api.nvim_create_autocmd("InsertCharPre", {
-	pattern = { "*.html", "*.jsx", "*.tsx" },
 	callback = function()
 		local char = vim.v.char
 
