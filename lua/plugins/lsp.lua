@@ -21,11 +21,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"clangd",
 					"ts_ls",
-					"lua_ls",
-					"gopls",
-					"rust_analyzer",
 				},
 				automatic_installation = true,
 			})

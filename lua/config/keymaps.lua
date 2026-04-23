@@ -25,6 +25,7 @@ vim.keymap.set("n", "ss", ":split<CR><C-w>w", opts)
 vim.keymap.set("n", "sv", ":vsplit<CR><C-w>w", opts)
 
 
+
 -- Move window
 keymap.set("n", "sh", "<C-w>h")
 keymap.set("n", "sk", "<C-w>k")
