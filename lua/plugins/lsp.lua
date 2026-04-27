@@ -139,15 +139,6 @@ return {
 			end, { desc = "Insert debugger block" })
 
 			-- colorcolumn toggle
-			vim.keymap.set("n", "vv", function()
-				if vim.opt.colorcolumn:get()[1] == nil then
-					vim.opt.colorcolumn = "80,120"
-					print("ColorColumn ON")
-				else
-					vim.opt.colorcolumn = ""
-					print("ColorColumn OFF")
-				end
-			end, { desc = "Toggle color column" })
 		end,
 	},
 
