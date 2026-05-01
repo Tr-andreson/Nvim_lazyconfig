@@ -54,25 +54,6 @@ return {
         },
       })
 
-      -- ⚡ Bottom terminal (FULL width, 25% height)
-      local bottom = Terminal:new({
-        hidden = true,
-        direction = "float",
-        float_opts = {
-          border = "single",
-          width = function()
-            return vim.o.columns
-          end,
-          height = function()
-            return math.floor(vim.o.lines * 0.25)
-          end,
-          row = function()
-            return vim.o.lines - math.floor(vim.o.lines * 0.25)
-          end,
-          col = 0,
-        },
-      })
-
       -- 🚀 Keymaps
       vim.keymap.set({ "n", "t" }, "<leader>;", function()
         right:toggle()
@@ -82,9 +63,9 @@ return {
         left:toggle()
       end, { desc = "Left Terminal" })
 
-      vim.keymap.set({ "n", "t" }, "<leader>o", function()
-        bottom:toggle()
-      end, { desc = "Bottom Terminal" })
+      -- vim.keymap.set({ "n", "t" }, "<leader>o", function()
+      --   bottom:toggle()
+      -- end, { desc = "Bottom Terminal" })
 
       -- ⚡ Exit terminal mode fast
       vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { silent = true })
