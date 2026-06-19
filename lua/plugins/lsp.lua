@@ -57,7 +57,7 @@ return {
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-					vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+					vim.keymap.set("n", "<space>cn", vim.lsp.buf.rename, opts)
 					vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
 
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -140,7 +140,22 @@ return {
 			end, { desc = "Insert debugger block" })
 
 			-- colorcolumn toggle
+			
+			vim.keymap.set("n", "cc", function()
+				vim.api.nvim_feedkeys(
+					vim.api.nvim_replace_termcodes(
+						"i{/*  --------------  ------------ */}<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
+						true,
+						false,
+						true
+					),
+					"n",
+					true
+				)
+			end, { noremap = true })
+
 		end,
 	},
+
 
 }

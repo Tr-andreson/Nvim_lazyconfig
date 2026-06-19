@@ -4,7 +4,6 @@ vim.g.maplocalleader = " "
 
 require("config.lazy")
 
-
 vim.diagnostic.enable(false)
 
 
@@ -33,9 +32,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 
 
 vim.opt.clipboard = "unnamedplus"
-
-
-
 
 vim.api.nvim_create_autocmd("InsertCharPre", {
 	pattern = { "*.html", "*.jsx", "*.tsx" , "*.astro" },
@@ -94,3 +90,7 @@ vim.api.nvim_create_autocmd("InsertCharPre", {
 		end)
 	end,
 })
+
+
+
+

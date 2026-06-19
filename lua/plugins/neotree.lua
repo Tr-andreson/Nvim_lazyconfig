@@ -8,12 +8,35 @@ return {
   },
 
   config = function()
-    -- 🔑 Toggle key inside config
     vim.keymap.set("n", "<leader>e", function()
-      require("neo-tree.command").execute({ toggle = true })
-    end, { desc = "NeoTree Toggle" })
+      require("neo-tree.command").execute({
+        toggle = true,
+        position = "float",
+      })
+    end, { desc = "NeoTree Float Toggle" })
 
     require("neo-tree").setup({
+      window = {
+        position = "float",
+
+        popup = {
+          -- size = {
+          --   height = "80%",
+          --   width = "50%",
+          -- },
+					size = {
+						width = 60,
+						height = 25,
+					},
+
+          position = "50%", -- center
+
+          border = {
+            style = "rounded",
+          },
+        },
+      },
+
       filesystem = {
         follow_current_file = {
           enabled = true,
@@ -21,14 +44,11 @@ return {
         use_libuv_file_watcher = true,
       },
 
-      -- window = {
-      --   width = 25,
-      -- },
-
       default_component_configs = {
         icon = {
-          enabled = false, -- ❌ no icons
+          enabled = false,
         },
+
         git_status = {
           symbols = {
             added     = "",
@@ -46,4 +66,3 @@ return {
     })
   end,
 }
-

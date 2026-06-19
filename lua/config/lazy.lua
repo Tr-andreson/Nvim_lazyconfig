@@ -21,13 +21,20 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
+
+  git = {
+    timeout = 86400, -- 1 day
+  },
+
   defaults = {
-    lazy = false, -- load plugins immediately (your preference)
+    lazy = false,
     version = false,
   },
+
   checker = {
     enabled = true,
   },
+
   performance = {
     rtp = {
       disabled_plugins = {
@@ -36,10 +43,6 @@ require("lazy").setup({
         "tohtml",
         "tutor",
         "zipPlugin",
-        -- optional (more minimal)
-        -- "matchit",
-        -- "matchparen",
-        -- "netrwPlugin",
       },
     },
   },
