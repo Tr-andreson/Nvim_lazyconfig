@@ -14,6 +14,7 @@ return {
 	------------------------------------
 	{
 		"williamboman/mason-lspconfig.nvim",
+    event = "VeryLazy", -- Lazy load on a useful event
 		dependencies = {
 			"williamboman/mason.nvim",
 			"neovim/nvim-lspconfig",

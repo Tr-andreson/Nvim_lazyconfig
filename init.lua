@@ -6,7 +6,6 @@ require("config.lazy")
 
 vim.diagnostic.enable(false)
 
-
 vim.g.lazyvim_check_order = false
 vim.opt.swapfile = false       -- Disable swap files
 vim.opt.foldmethod = "manual"
@@ -16,7 +15,9 @@ vim.o.laststatus = 0
 vim.opt.termguicolors = true
 vim.opt.showmode = false
 vim.opt.tabstop = 2
+
 vim.opt.shiftwidth = 2
+
 -- Force these settings to stay off every time a file is opened
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = "*",
@@ -24,8 +25,8 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 		vim.opt.statuscolumn = ""
 		vim.opt.foldcolumn = "0"
 		vim.opt.signcolumn = "no" -- Change to "yes" if you want LSP icons back
-		vim.opt.wrap = false -- Ensures 'nowrap' is always true
 		vim.o.cmdheight = 0
+		vim.opt.wrap = false -- Ensures 'nowrap' is always true
 		vim.opt.shortmess:append("Cc") -- Hide redundant messages
 	end,
 })
@@ -73,6 +74,7 @@ vim.api.nvim_create_autocmd("InsertCharPre", {
 		local self_closing = {
 			br = true, img = true, input = true, hr = true, meta = true, link = true
 		}
+
 
 		if self_closing[tag] then
 			return

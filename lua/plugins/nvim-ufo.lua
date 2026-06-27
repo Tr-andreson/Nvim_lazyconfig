@@ -1,6 +1,7 @@
 return {
   {
     "kevinhwang91/nvim-ufo",
+    event = "VeryLazy", -- Lazy load on a useful event
     dependencies = {
       "kevinhwang91/promise-async",
     },

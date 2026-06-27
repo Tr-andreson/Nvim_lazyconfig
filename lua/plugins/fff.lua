@@ -1,6 +1,7 @@
 return {
   {
     "dmtrKovalenko/fff.nvim",
+    event = "VeryLazy", -- Lazy load on a useful event
     build = function()
       require("fff.download").download_or_build_binary()
     end,
