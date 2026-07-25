@@ -1,6 +1,7 @@
 return {
   {
     "kevinhwang91/nvim-ufo",
+    event = "VeryLazy", -- Lazy load on a useful event
     dependencies = {
       "kevinhwang91/promise-async",
     },
@@ -71,9 +72,9 @@ return {
           folds_open = true
         end
       end, { desc = "UFO Toggle All Folds" })
-      map("n", "zl", require("ufo").openAllFolds, { desc = "Open All Folds" })
+      map("n", "zo", require("ufo").openAllFolds, { desc = "Open All Folds" })
       map("n", "zk", require("ufo").closeAllFolds, { desc = "Close All Folds" })
-      map("n", "zp", require("ufo").peekFoldedLinesUnderCursor, { desc = "Peek Folded Lines" })
+      -- map("n", "zp", require("ufo").peekFoldedLinesUnderCursor, { desc = "Peek Folded Lines" })
     end,
   },
 }
